@@ -122,7 +122,6 @@
         }
 
         section {
-            /* Generous padding and spacing to extend scroll distance per section */
             min-height: 90vh;
             padding-top: 40px;
             padding-bottom: 80px;
@@ -145,6 +144,14 @@
         p {
             margin-bottom: 25px;
             font-size: 18px; /* Larger text for longer reading distance */
+        }
+
+        /* Section Image Styling */
+        .section-img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #000000;
+            margin-bottom: 25px;
         }
 
         .profile-card {
@@ -211,23 +218,32 @@
 
                 <section id="catalyst" data-bg="Background1.png">
                     <h2>1. The Early Catalyst (Place & Curiosity)</h2>
-                    <p>I grew up in San Benito, where I lived for about 10 to 11 years. With this, I was enrolled in local schools. The first one was Ed Downs Elementary, and later I attended STEAM Academy from 3rd through 5th grade. Without both of these schools, I would have never had a kickstart on my development in reading. This was greatly influenced by their libraries and encouragement to explore literature and general academics at both. </p>
+                    <!-- This matches Image1.png from your repository -->
+                    <img src="Image1.png" alt="Early Catalyst Illustration" class="section-img">
+                    <p>I grew up in San Benito, where I lived for about 10 to 11 years. With this, I was enrolled in local schools. The first one was Ed Downs Elementary, and later I attended STEAM Academy from 3rd through 5th grade. Without both of these schools, I would have never had a kickstart on my development in reading. This was greatly influenced by their libraries and encouragement to explore literature and general academics at both.</p>
+                    <p>Literacy didn't start for me in a sterile classroom with standardized worksheets; rather, it began by trying to decode the environment around me—interpreting local conversations, tracking seasonal shifts, and making sense of the natural mechanics of the world right outside my window.</p>
                 </section>
 
                 <section id="digital" data-bg="Background2.png">
                     <h2>2. From Pages to Pixels (The Digital Shift)</h2>
+                    <!-- Change to Image2.png once you upload it to GitHub -->
+                    <img src="Image2.png" alt="Digital Shift Illustration" class="section-img">
                     <p>Getting my first device marked a massive turning point in my personal evolution: the pivotal transition from a passive consumer of words and media to an active creator. Suddenly, literacy expanded far beyond the boundaries of the traditional English alphabet into the realm of syntax, logic, and structural architecture.</p>
                     <p>Writing stopped being just about structured essays and started being about writing code, scripting complex game mechanics in Luau, and engineering interactive digital worlds from scratch. Debugging a broken script or writing clear technical documentation taught me extreme precision, immense patience, and how to communicate instructions clearly—both to an unforgiving computer and to human collaborators.</p>
                 </section>
 
                 <section id="research" data-bg="Background3.png">
                     <h2>3. Roots and Research (The Scientific Voice)</h2>
+                    <!-- Change to Image3.png once you upload it to GitHub -->
+                    <img src="Image3.png" alt="Roots and Research Illustration" class="section-img">
                     <p>Transitioning into formal academic research, intensive environmental science fieldwork, and rigorous data analysis radically changed my relationship with nonfiction and technical writing. Whether tracking delicate local habitats or processing intricate taproot growth data in RStudio, raw numbers and programming code effectively became another language entirely.</p>
                     <p>Learning how to translate chaotic raw data into polished, APA-formatted research papers and precise ggplot2 visualizations taught me a vital lesson: that professional writing is fundamentally a powerful tool for environmental advocacy, empirical discovery, and sharing objective truths with the broader academic community.</p>
                 </section>
 
                 <section id="community" data-bg="Background4.png">
                     <h2>4. Community and Collaboration (People Who Shaped the Voice)</h2>
+                    <!-- Change to Image4.png once you upload it to GitHub -->
+                    <img src="Image4.png" alt="Community and Collaboration Illustration" class="section-img">
                     <p>True literacy is rarely an isolated or solitary act. Working closely alongside dedicated mentors like Mr. Cortez on school recycling initiatives and local conservation projects, or collaborating directly with peers on dynamic group presentations, completely shifted writing from a lonely school assignment into a practical tool for real-world communication and community mobilization.</p>
                     <p>Collaborating side-by-side with teammates on persuasive advocacy presentations and actively listening under the steady guidance of experienced mentors taught me how to skillfully adapt my arguments to fit different audiences, handle constructive criticism, and articulate shared community goals effectively.</p>
                 </section>
@@ -257,7 +273,6 @@
         function setBackground(bgImage) {
             if (!bgImage) return;
             
-            // Find which background layer matches the target image
             const layers = document.querySelectorAll('.bg-layer');
             layers.forEach(layer => {
                 const layerBg = layer.style.backgroundImage;
@@ -270,7 +285,6 @@
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-            // 1. Handle Smooth Transitions on Navigation Clicks
             document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const bgImage = this.getAttribute('data-bg');
@@ -278,7 +292,6 @@
                 });
             });
 
-            // 2. Handle Smooth Transitions on Natural Scrolling
             const observerOptions = {
                 root: null,
                 rootMargin: '-35% 0px -35% 0px',
