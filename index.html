@@ -19,33 +19,38 @@
             font-family: Arial, sans-serif;
             background-color: #ffffff;
             color: #111111;
-            line-height: 1.6;
+            line-height: 2.2; /* Double line spacing */
             padding: 20px;
             /* Default fallback background image */
             background-image: url('Background1.png');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
-            transition: background-image 1s ease-in-out;
+            transition: background-image 1.2s ease-in-out;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.92); /* Subtle overlay for text readability */
-            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.94); /* Subtle overlay for readability */
+            padding: 40px;
             border-radius: 4px;
         }
 
         header {
             border-bottom: 2px solid #000000;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+            line-height: 1.8;
         }
 
         .main-layout {
@@ -66,7 +71,7 @@
         }
 
         .sidebar-nav h3 {
-            font-size: 14px;
+            font-size: 15px;
             text-transform: uppercase;
             margin-bottom: 15px;
             letter-spacing: 1px;
@@ -79,15 +84,15 @@
         }
 
         .sidebar-nav li {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .sidebar-nav a {
             color: #000000;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
             display: block;
-            padding: 5px 8px;
+            padding: 6px 10px;
             border-left: 2px solid transparent;
             transition: all 0.2s ease;
         }
@@ -103,28 +108,33 @@
         }
 
         section {
-            margin-bottom: 60px;
-            scroll-margin-top: 30px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.85);
-            border-left: 3px solid #000000;
+            /* Generous padding and spacing to extend scroll distance per section */
+            min-height: 90vh;
+            padding-top: 40px;
+            padding-bottom: 80px;
+            margin-bottom: 80px;
+            scroll-margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.88);
+            border-left: 4px solid #000000;
+            padding-left: 30px;
+            padding-right: 20px;
         }
 
         h2 {
-            font-size: 20px;
+            font-size: 24px;
             text-transform: uppercase;
             border-bottom: 1px solid #000000;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
         }
 
         p {
-            margin-bottom: 15px;
-            font-size: 15px;
+            margin-bottom: 25px;
+            font-size: 18px; /* Larger text for longer reading distance */
         }
 
         .profile-card {
-            margin-top: 30px;
+            margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid #cccccc;
         }
@@ -133,14 +143,14 @@
             width: 100%;
             height: auto;
             border: 1px solid #000000;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         footer {
-            margin-top: 50px;
+            margin-top: 60px;
             border-top: 1px solid #000000;
-            padding-top: 15px;
-            font-size: 12px;
+            padding-top: 20px;
+            font-size: 13px;
             color: #555555;
             text-align: center;
         }
@@ -181,36 +191,36 @@
 
                 <section id="catalyst" data-bg="Background1.png">
                     <h2>1. The Early Catalyst (Place & Curiosity)</h2>
-                    <p>Growing up in Weslaco and the surrounding Rio Grande Valley meant being surrounded by a distinct landscape, local ecology, and a rich cultural crossroads. It was here that my early relationship with reading, observing, and questioning began.</p>
-                    <p>Literacy didn't start in a sterile classroom; it began by trying to decode the environment, local conversations, and the natural mechanics of the world right outside the window.</p>
+                    <p>Growing up in Weslaco and the surrounding Rio Grande Valley meant being immersed in a distinct physical landscape, a complex local ecology, and a rich, intersecting cultural crossroads. It was within this unique environment that my foundational relationship with reading, observing, and questioning first began to take shape.</p>
+                    <p>Literacy didn't start for me in a sterile classroom with standardized worksheets; rather, it began by trying to decode the environment around me—interpreting local conversations, tracking seasonal shifts, and making sense of the natural mechanics of the world right outside my window.</p>
                 </section>
 
                 <section id="digital" data-bg="Background2.png">
                     <h2>2. From Pages to Pixels (The Digital Shift)</h2>
-                    <p>Getting my first device marked a massive turning point: the transition from a consumer of words and media to an active creator. Literacy expanded past the English alphabet into syntax, logic, and structure.</p>
-                    <p>Writing stopped being just about essays and started being about code, scripting complex game mechanics in Luau, and building digital worlds. Debugging a broken script or writing documentation taught me precision, patience, and how to communicate instructions clearly—both to a computer and to collaborators.</p>
+                    <p>Getting my first device marked a massive turning point in my personal evolution: the pivotal transition from a passive consumer of words and media to an active creator. Suddenly, literacy expanded far beyond the boundaries of the traditional English alphabet into the realm of syntax, logic, and structural architecture.</p>
+                    <p>Writing stopped being just about structured essays and started being about writing code, scripting complex game mechanics in Luau, and engineering interactive digital worlds from scratch. Debugging a broken script or writing clear technical documentation taught me extreme precision, immense patience, and how to communicate instructions clearly—both to an unforgiving computer and to human collaborators.</p>
                 </section>
 
                 <section id="research" data-bg="Background3.png">
                     <h2>3. Roots and Research (The Scientific Voice)</h2>
-                    <p>Transitioning into formal research, environmental science fieldwork, and data analysis changed my relationship with nonfiction and technical writing. Whether tracking local habitats or processing taproot growth data in RStudio, numbers and code became another language entirely.</p>
-                    <p>Learning to translate raw data into APA-formatted research papers and ggplot2 visualizations taught me that writing is fundamentally a tool for environmental advocacy and scientific discovery.</p>
+                    <p>Transitioning into formal academic research, intensive environmental science fieldwork, and rigorous data analysis radically changed my relationship with nonfiction and technical writing. Whether tracking delicate local habitats or processing intricate taproot growth data in RStudio, raw numbers and programming code effectively became another language entirely.</p>
+                    <p>Learning how to translate chaotic raw data into polished, APA-formatted research papers and precise ggplot2 visualizations taught me a vital lesson: that professional writing is fundamentally a powerful tool for environmental advocacy, empirical discovery, and sharing objective truths with the broader academic community.</p>
                 </section>
 
                 <section id="community" data-bg="Background4.png">
                     <h2>4. Community and Collaboration (People Who Shaped the Voice)</h2>
-                    <p>Literacy is rarely an isolated act. Working alongside mentors like Mr. Cortez on school recycling and conservation projects, or collaborating with peers on group presentations, shifted writing from a solo school assignment to a tool for real-world communication.</p>
-                    <p>Collaborating with teammates on persuasive presentations and listening under the guidance of mentors taught me how to adapt my arguments to an audience and articulate shared goals effectively.</p>
+                    <p>True literacy is rarely an isolated or solitary act. Working closely alongside dedicated mentors like Mr. Cortez on school recycling initiatives and local conservation projects, or collaborating directly with peers on dynamic group presentations, completely shifted writing from a lonely school assignment into a practical tool for real-world communication and community mobilization.</p>
+                    <p>Collaborating side-by-side with teammates on persuasive advocacy presentations and actively listening under the steady guidance of experienced mentors taught me how to skillfully adapt my arguments to fit different audiences, handle constructive criticism, and articulate shared community goals effectively.</p>
                 </section>
 
                 <section id="conclusion" data-bg="Background4.png">
                     <h2>Conclusion: The Modern Literacy Toolkit</h2>
-                    <p>My definition of a "literate person" has evolved dramatically. I am not just someone who reads textbooks or types essays; I am someone who builds web interfaces, analyzes ecological data in R, scripts virtual mechanics, and uses clear communication to bridge the gap between technical science and the everyday world.</p>
+                    <p>My overall definition of what it means to be a "literate person" has evolved quite dramatically over the years. I am no longer just someone who reads standard textbooks or types traditional academic essays; I am someone who builds dynamic web interfaces, analyzes complex ecological data sets using R, scripts responsive virtual mechanics, and leverages clear communication to bridge the persistent gap between technical science and the everyday world.</p>
                 </section>
 
                 <section id="contact" data-bg="Background1.png">
                     <h2>Contact & Connect</h2>
-                    <p>If you'd like to talk about code, research, or literacy journeys, feel free to reach out!</p>
+                    <p>If you'd like to talk about code, scientific research, or our shared literacy journeys, feel free to reach out anytime!</p>
                     <p><strong>Email:</strong> <a href="mailto:name@example.com">name@example.com</a></p>
                 </section>
 
@@ -225,14 +235,14 @@
     </div>
 
     <script>
-        // Intersection Observer to smoothly transition the page background image as sections scroll into view
+        // Intersection Observer to smoothly transition the background image only when sections cross into the middle viewport view
         document.addEventListener("DOMContentLoaded", function () {
             const bodyElement = document.getElementById('body-bg');
             
             const observerOptions = {
                 root: null,
-                rootMargin: '-20% 0px -50% 0px',
-                threshold: 0.1
+                rootMargin: '-35% 0px -35% 0px',
+                threshold: 0
             };
 
             const observer = new IntersectionObserver((entries) => {
