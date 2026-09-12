@@ -21,12 +21,24 @@
             color: #111111;
             line-height: 2.2; /* Double line spacing */
             padding: 20px;
-            /* Default fallback background image */
-            background-image: url('Background1.png');
+        }
+
+        /* Smooth Cross-Fading Background Layers */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background-size: cover;
-            background-attachment: fixed;
             background-position: center;
-            transition: background-image 1.2s ease-in-out;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .bg-layer.active {
+            opacity: 1;
         }
 
         .container {
@@ -35,6 +47,8 @@
             background-color: rgba(255, 255, 255, 0.94); /* Subtle overlay for readability */
             padding: 40px;
             border-radius: 4px;
+            position: relative;
+            z-index: 1;
         }
 
         header {
@@ -156,7 +170,13 @@
         }
     </style>
 </head>
-<body id="body-bg">
+<body>
+
+    <!-- Background Cross-Fade Layers -->
+    <div id="bg-1" class="bg-layer active" style="background-image: url('Background1.png');"></div>
+    <div id="bg-2" class="bg-layer" style="background-image: url('Background2.png');"></div>
+    <div id="bg-3" class="bg-layer" style="background-image: url('Background3.png');"></div>
+    <div id="bg-4" class="bg-layer" style="background-image: url('Background4.png');"></div>
 
     <div class="container">
 
@@ -171,12 +191,12 @@
             <nav class="sidebar-nav">
                 <h3>Navigation</h3>
                 <ul>
-                    <li><a href="#catalyst">1. The Early Catalyst</a></li>
-                    <li><a href="#digital">2. Pages to Pixels</a></li>
-                    <li><a href="#research">3. Roots & Research</a></li>
-                    <li><a href="#community">4. Community & Voice</a></li>
-                    <li><a href="#conclusion">Conclusion</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#catalyst" data-bg="Background1.png">1. The Early Catalyst</a></li>
+                    <li><a href="#digital" data-bg="Background2.png">2. Pages to Pixels</a></li>
+                    <li><a href="#research" data-bg="Background3.png">3. Roots & Research</a></li>
+                    <li><a href="#community" data-bg="Background4.png">4. Community & Voice</a></li>
+                    <li><a href="#conclusion" data-bg="Background4.png">Conclusion</a></li>
+                    <li><a href="#contact" data-bg="Background1.png">Contact</a></li>
                 </ul>
 
                 <div class="profile-card">
@@ -235,10 +255,31 @@
     </div>
 
     <script>
-        // Intersection Observer to smoothly transition the background image only when sections cross into the middle viewport view
-        document.addEventListener("DOMContentLoaded", function () {
-            const bodyElement = document.getElementById('body-bg');
+        function setBackground(bgImage) {
+            if (!bgImage) return;
             
+            // Find which background layer matches the target image
+            const layers = document.querySelectorAll('.bg-layer');
+            layers.forEach(layer => {
+                const layerBg = layer.style.backgroundImage;
+                if (layerBg.includes(bgImage)) {
+                    layer.classList.add('active');
+                } else {
+                    layer.classList.remove('active');
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1. Handle Smooth Transitions on Navigation Clicks
+            document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const bgImage = this.getAttribute('data-bg');
+                    setBackground(bgImage);
+                });
+            });
+
+            // 2. Handle Smooth Transitions on Natural Scrolling
             const observerOptions = {
                 root: null,
                 rootMargin: '-35% 0px -35% 0px',
@@ -249,9 +290,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const bgImage = entry.target.getAttribute('data-bg');
-                        if (bgImage) {
-                            bodyElement.style.backgroundImage = `url('${bgImage}')`;
-                        }
+                        setBackground(bgImage);
                     }
                 });
             }, observerOptions);
