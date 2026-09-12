@@ -21,11 +21,20 @@
             color: #111111;
             line-height: 1.6;
             padding: 20px;
+            /* Default fallback background image */
+            background-image: url('Background1.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.92); /* Subtle overlay for text readability */
+            padding: 30px;
+            border-radius: 4px;
         }
 
         header {
@@ -85,7 +94,7 @@
 
         .sidebar-nav a:hover {
             border-left: 2px solid #000000;
-            background-color: #f9f9f9;
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
         /* Main Content Styling */
@@ -94,8 +103,11 @@
         }
 
         section {
-            margin-bottom: 50px;
-            scroll-margin-top: 20px;
+            margin-bottom: 60px;
+            scroll-margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-left: 3px solid #000000;
         }
 
         h2 {
@@ -106,30 +118,9 @@
             margin-bottom: 15px;
         }
 
-        h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
-
         p {
             margin-bottom: 15px;
             font-size: 15px;
-        }
-
-        /* Smooth Image Transition Styling */
-        .section-img {
-            width: 100%;
-            height: auto;
-            border: 1px solid #000000;
-            margin-bottom: 15px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .section-img.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .profile-card {
@@ -155,7 +146,7 @@
         }
     </style>
 </head>
-<body>
+<body id="body-bg">
 
     <div class="container">
 
@@ -188,40 +179,36 @@
             <!-- Main Content Area -->
             <main class="main-content">
 
-                <section id="catalyst">
+                <section id="catalyst" data-bg="Background1.png">
                     <h2>1. The Early Catalyst (Place & Curiosity)</h2>
-                    <img src="Background1.png" alt="Early Catalyst Background" class="section-img">
                     <p>Growing up in Weslaco and the surrounding Rio Grande Valley meant being surrounded by a distinct landscape, local ecology, and a rich cultural crossroads. It was here that my early relationship with reading, observing, and questioning began.</p>
                     <p>Literacy didn't start in a sterile classroom; it began by trying to decode the environment, local conversations, and the natural mechanics of the world right outside the window.</p>
                 </section>
 
-                <section id="digital">
+                <section id="digital" data-bg="Background2.png">
                     <h2>2. From Pages to Pixels (The Digital Shift)</h2>
-                    <img src="Background2.png" alt="Digital Shift Background" class="section-img">
                     <p>Getting my first device marked a massive turning point: the transition from a consumer of words and media to an active creator. Literacy expanded past the English alphabet into syntax, logic, and structure.</p>
                     <p>Writing stopped being just about essays and started being about code, scripting complex game mechanics in Luau, and building digital worlds. Debugging a broken script or writing documentation taught me precision, patience, and how to communicate instructions clearly—both to a computer and to collaborators.</p>
                 </section>
 
-                <section id="research">
+                <section id="research" data-bg="Background3.png">
                     <h2>3. Roots and Research (The Scientific Voice)</h2>
-                    <img src="Background3.png" alt="Roots and Research Background" class="section-img">
                     <p>Transitioning into formal research, environmental science fieldwork, and data analysis changed my relationship with nonfiction and technical writing. Whether tracking local habitats or processing taproot growth data in RStudio, numbers and code became another language entirely.</p>
                     <p>Learning to translate raw data into APA-formatted research papers and ggplot2 visualizations taught me that writing is fundamentally a tool for environmental advocacy and scientific discovery.</p>
                 </section>
 
-                <section id="community">
+                <section id="community" data-bg="Background4.png">
                     <h2>4. Community and Collaboration (People Who Shaped the Voice)</h2>
-                    <img src="Background4.png" alt="Community and Collaboration Background" class="section-img">
                     <p>Literacy is rarely an isolated act. Working alongside mentors like Mr. Cortez on school recycling and conservation projects, or collaborating with peers on group presentations, shifted writing from a solo school assignment to a tool for real-world communication.</p>
                     <p>Collaborating with teammates on persuasive presentations and listening under the guidance of mentors taught me how to adapt my arguments to an audience and articulate shared goals effectively.</p>
                 </section>
 
-                <section id="conclusion">
+                <section id="conclusion" data-bg="Background4.png">
                     <h2>Conclusion: The Modern Literacy Toolkit</h2>
                     <p>My definition of a "literate person" has evolved dramatically. I am not just someone who reads textbooks or types essays; I am someone who builds web interfaces, analyzes ecological data in R, scripts virtual mechanics, and uses clear communication to bridge the gap between technical science and the everyday world.</p>
                 </section>
 
-                <section id="contact">
+                <section id="contact" data-bg="Background1.png">
                     <h2>Contact & Connect</h2>
                     <p>If you'd like to talk about code, research, or literacy journeys, feel free to reach out!</p>
                     <p><strong>Email:</strong> <a href="mailto:name@example.com">name@example.com</a></p>
@@ -238,24 +225,29 @@
     </div>
 
     <script>
-        // Intersection Observer for smooth fade-in/slide-up transition effect on images
+        // Intersection Observer to smoothly transition the page background image as sections scroll into view
         document.addEventListener("DOMContentLoaded", function () {
+            const bodyElement = document.getElementById('body-bg');
+            
             const observerOptions = {
                 root: null,
-                rootMargin: '0px',
-                threshold: 0.2
+                rootMargin: '-20% 0px -50% 0px',
+                threshold: 0.1
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        const bgImage = entry.target.getAttribute('data-bg');
+                        if (bgImage) {
+                            bodyElement.style.backgroundImage = `url('${bgImage}')`;
+                        }
                     }
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.section-img').forEach(img => {
-                observer.observe(img);
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
